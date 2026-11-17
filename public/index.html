@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d0b14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>TFI Movie Imposter</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to game</a>
+  <header class="top">
+    <h1>🎬 TFI Movie Imposter</h1>
+    <p class="tag">Everyone knows the movie… except one.</p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Home -->
+    <section id="home" class="screen" aria-labelledby="home-title">
+      <h2 id="home-title" class="sr-only">Start or join a game</h2>
+      <div class="panel">
+        <label for="name">Your name</label>
+        <input id="name" maxlength="20" autocomplete="nickname" placeholder="What should friends call you?" />
+
+        <button id="create" class="btn primary">Create room</button>
+
+        <div class="divider"><span>or join a friend</span></div>
+
+        <label for="code">Room code</label>
+        <input id="code" inputmode="numeric" pattern="\d{6}" maxlength="6" autocomplete="off" placeholder="6-digit code" />
+        <button id="join" class="btn">Join room</button>
+      </div>
+
+      <details class="panel how">
+        <summary>How to play</summary>
+        <ol>
+          <li>Everyone gets the same secret Telugu movie — except the <strong>imposter</strong>. Everyone also sees a list of <strong>20 possible movies</strong> (the real one plus 19 look-alikes with the same heroes, directors or genres).</li>
+          <li>Go around and each say <strong>one clue</strong> about the movie without naming it. Too obvious and the imposter catches on; too vague and you look suspicious.</li>
+          <li>The host opens voting. Vote for who you think is the imposter.</li>
+          <li>If the imposter is caught, they get one chance to <strong>guess the movie</strong> from the 20 and steal the win.</li>
+          <li>Crew win: +1 each. Imposter win: +2.</li>
+        </ol>
+      </details>
+    </section>
+
+    <!-- Room -->
+    <section id="room" class="screen" hidden aria-labelledby="room-title">
+      <div class="roombar">
+        <div>
+          <h2 id="room-title" class="label">Room</h2>
+          <button id="codeBtn" class="code" aria-label="Room code. Tap to share."></button>
+        </div>
+        <div class="roombar-actions">
+          <span id="conn" class="conn" role="status"></span>
+          <button id="leave" class="btn small ghost">Leave</button>
+        </div>
+      </div>
+      <div id="stage"></div>
+      <section class="panel" aria-labelledby="players-title">
+        <h3 id="players-title">Players</h3>
+        <ul id="players" class="players"></ul>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="alert" aria-live="assertive" hidden></div>
+  <div id="announce" class="sr-only" aria-live="polite"></div>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
